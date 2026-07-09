@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Modular Timer</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <aside id="side-panel" class="hide-in-pip">
+        <div class="panel-header">
+            <h2 class="app-title">Multi Timer</h2>
+            <button id="settings-btn" class="icon-btn" title="환경설정"><span class="material-symbols-outlined">settings</span></button>
+        </div>
+        
+        <div class="panel-content">
+            <button class="add-module-btn" id="add-hms-btn">
+                <span class="material-symbols-outlined">timer_arrow_down</span>
+                HMS Countdown
+            </button>
+            <button class="add-module-btn" id="add-sec-btn">
+                <span class="material-symbols-outlined">timer_arrow_down</span>
+                Sec Countdown
+            </button>
+            <button class="add-module-btn" id="add-sw-btn">
+                <span class="material-symbols-outlined">timer_arrow_up</span>
+                Stopwatch
+            </button>
+        </div>
+
+        <div class="audio-control-panel">
+            <div class="audio-header">
+                <span class="material-symbols-outlined">volume_up</span>
+                <span>알림 설정</span>
+            </div>
+            
+            <div class="waveform-toggles">
+                <button class="wave-btn active" data-wave="square" title="레트로">Square</button>
+                <button class="wave-btn" data-wave="sine" title="부드러움">Sine</button>
+                <button class="wave-btn" data-wave="triangle" title="베이스">Tri</button>
+                <button class="wave-btn" data-wave="sawtooth" title="강렬함">Saw</button>
+            </div>
+
+            <div class="melody-toggles">
+                <button class="melody-btn active" data-melody="m1" title="도미솔">M1</button>
+                <button class="melody-btn" data-melody="m2" title="팡파레">M2</button>
+                <button class="melody-btn" data-melody="m3" title="단순알림">M3</button>
+                <button class="melody-btn" data-melody="m4" title="더블비프">M4</button>
+                <button class="melody-btn" data-melody="m5" title="오름차순">M5</button>
+                <button class="melody-btn" data-melody="m6" title="코인획득">M6</button>
+                <button class="melody-btn" data-melody="m7" title="아이템">M7</button>
+                <button class="melody-btn" data-melody="m8" title="짧은알림">M8</button>
+                <button class="melody-btn" data-melody="m9" title="내림차순">M9</button>
+                <button class="melody-btn" data-melody="m10" title="틱">M10</button>
+            </div>
+            <input type="range" id="volume-slider" min="0" max="100" value="50" class="volume-slider" title="알림 볼륨">
+        </div>
+    </aside>
+
+    <div id="app-container">
+        <div class="top-bar hide-in-pip">
+            <div class="pip-wrapper">
+                <span class="pip-hint">미니 뷰로 띄우기</span>
+                <button id="pip-btn" title="활성화된 모듈만 PIP로 띄우기">
+                    <span class="material-symbols-outlined">picture_in_picture_alt</span>
+                </button>
+            </div>
+        </div>
+        <main id="cards-container"></main>
+    </div>
+
+    <div id="settings-modal" class="modal hidden hide-in-pip">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>환경 설정 (Settings)</h2>
+                <button id="close-modal-btn" class="icon-btn"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            
+            <div class="modal-section">
+                <h3>테마 색상 변경</h3>
+                <div class="theme-grid">
+                    <label>배경 색상 (Background)<input type="color" id="color-bg" value="#121212"></label>
+                    <label>카드 색상 (Card)<input type="color" id="color-card" value="#2d2d2d"></label>
+                    <label>기본 폰트 (Font)<input type="color" id="color-font" value="#ffffff"></label>
+                    <label>동작 강조 (Highlight 1)<input type="color" id="color-hl1" value="#4da6ff"></label>
+                    <label>경고 색상 (Highlight 2)<input type="color" id="color-hl2" value="#ff4d4d"></label>
+                </div>
+                <button id="reset-theme-btn" class="reset-btn">기본 테마로 초기화</button>
+            </div>
+
+            <div class="modal-section credits">
+                <h3>Credits & Info</h3>
+                <p>Icons by <strong>Google Material Symbols</strong> (Apache License 2.0)</p>
+                <p>Sound Engine Powered by <strong>Web Audio API</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
